@@ -5,7 +5,7 @@ import style from './App.module.css';
 import { fetchContacts } from './redux/contactsOps';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectLoading, selectError } from './redux/contactsSlice';
+import { selectLoading, selectError } from './redux/selectors';
 
 const App = () => {
   const dispatch = useDispatch();
