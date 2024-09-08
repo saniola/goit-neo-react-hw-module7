@@ -1,9 +1,16 @@
 import PropTypes from 'prop-types';
 import style from './Contact.module.css';
+import { useDispatch } from 'react-redux';
+import { deleteContact } from '../../redux/contactsOps.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPhone } from '@fortawesome/free-solid-svg-icons';
 
-const Contact = ({ contact, deleteContact }) => {
+const Contact = ({ contact }) => {
+  const dispatch = useDispatch();
+
+  const handleDeleteContact = () => {
+    dispatch(deleteContact(contact.id));
+  };
   return (
     <li className={style.contact}>
       <div className={style.info}>
@@ -18,7 +25,7 @@ const Contact = ({ contact, deleteContact }) => {
       </div>
       <button
         className={`${style.deleteButton} button`}
-        onClick={() => deleteContact(contact.id)}
+        onClick={() => handleDeleteContact(contact.id)}
       >
         Delete
       </button>
