@@ -24,7 +24,22 @@ const App = () => {
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
       <ContactList />
-      <iframe id="3112900" allowtransparency="true" frameborder="0" style="width:100%;border:none;" src="//www.chess-2.com/emboard?id=3112900"></iframe><script>window.addEventListener("message",(e)=>{const{data}=e;if(data?.id==="3112900"){constelement=document.getElementById(data.id);if(element){element.style.height=`${data.frameHeight+37}px`;}}});</script>
+      <iframe
+        id="3112900"
+        allowtransparency="true"
+        frameborder="0"
+        style="width:100%;border:none;"
+        src="//www.chess-2.com/emboard?id=3112900"
+      ></iframe>
+      <script>
+        window.addEventListener("message",e=>
+        {e['data'] &&
+          '3112900' === e['data']['id'] &&
+          document.getElementById(`${e['data']['id']}`) &&
+          (document.getElementById(`${e['data']['id']}`).style.height =
+            `${e['data']['frameHeight'] + 30}px`)}
+        );
+      </script>
     </div>
   );
 };
